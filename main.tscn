@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://gauhneybrmmk"]
+
+[ext_resource type="PackedScene" uid="uid://bep4mhohal4i6" path="res://logic_block.tscn" id="1_wtfa3"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("1_wtfa3")]
+position = Vector2(144, 159)
