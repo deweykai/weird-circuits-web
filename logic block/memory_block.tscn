@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dic8cg4xbkjj3"]
+
+[ext_resource type="PackedScene" uid="uid://cgpkgit6a6r4d" path="res://logic block/logic_block_sprite.tscn" id="1_bbn8s"]
+[ext_resource type="Script" path="res://logic block/scripts/memory_block.gd" id="1_f10a4"]
+
+[node name="MemoryBlock" type="Node2D"]
+script = ExtResource("1_f10a4")
+
+[node name="LogicBlockSprite" parent="." instance=ExtResource("1_bbn8s")]
+position = Vector2(2.08165e-12, 2.08165e-12)

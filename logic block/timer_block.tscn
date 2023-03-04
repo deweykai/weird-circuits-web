@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://logic block/logic_block_sprite.tscn" id="1_dq54d"]
+[ext_resource type="Script" path="res://logic block/scripts/timer_block.gd" id="1_dxuto"]
+
+[node name="TimerBlock" type="Node2D"]
+script = ExtResource("1_dxuto")
+
+[node name="LogicBlock" parent="." instance=ExtResource("1_dq54d")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="FlashRect" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(-60, -60)
+scale = Vector2(120, 120)
+color = Color(1, 1, 1, 0.552941)
+polygon = PackedVector2Array(0, 0, -0.166667, 0, -0.166667, 1, 2.08165e-12, 1, 0, 1.16667, 1, 1.16667, 1, 1, 1.16667, 1, 1.16667, 0, 1, 2.08165e-12, 1, -0.166667, 0, -0.166667)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

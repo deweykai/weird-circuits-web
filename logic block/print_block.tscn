@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://logic block/scripts/print_block.gd" id="1_7wryv"]
+[ext_resource type="PackedScene" path="res://logic block/logic_block_sprite.tscn" id="2_0af42"]
+
+[node name="PrintBlock" type="Node2D"]
+script = ExtResource("1_7wryv")
+
+[node name="LogicBlock" parent="." instance=ExtResource("2_0af42")]
+position = Vector2(2.08165e-12, 2.08165e-12)

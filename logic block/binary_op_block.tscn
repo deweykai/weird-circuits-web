@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://vex6vs0rmjfw"]
+
+[ext_resource type="Script" path="res://logic block/scripts/binary_op_block.gd" id="1_wagvr"]
+[ext_resource type="PackedScene" uid="uid://cgpkgit6a6r4d" path="res://logic block/logic_block_sprite.tscn" id="1_ykxgt"]
+
+[node name="BinaryOpBlock" type="Node2D"]
+script = ExtResource("1_wagvr")
+
+[node name="LogicBlock" parent="." instance=ExtResource("1_ykxgt")]

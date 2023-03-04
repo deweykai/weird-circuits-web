@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://gauhneybrmmk"]
+[gd_scene load_steps=5 format=3 uid="uid://1xh1jnqfxphe"]
 
-[ext_resource type="PackedScene" uid="uid://bep4mhohal4i6" path="res://logic_block.tscn" id="1_wtfa3"]
+[ext_resource type="PackedScene" path="res://logic block/timer_block.tscn" id="1_gspro"]
+[ext_resource type="PackedScene" uid="uid://vex6vs0rmjfw" path="res://logic block/binary_op_block.tscn" id="2_xvqku"]
+[ext_resource type="PackedScene" path="res://logic block/print_block.tscn" id="3_gbvsu"]
+[ext_resource type="PackedScene" uid="uid://dic8cg4xbkjj3" path="res://logic block/memory_block.tscn" id="4_iggod"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="AnimatedSprite2D" parent="." instance=ExtResource("1_wtfa3")]
-position = Vector2(144, 159)
+[node name="TimerBlock" parent="." instance=ExtResource("1_gspro")]
+position = Vector2(155, 133)
+
+[node name="PrintBlock" parent="." instance=ExtResource("3_gbvsu")]
+position = Vector2(511, 478)
+
+[node name="BinaryOpBlock" parent="." instance=ExtResource("2_xvqku")]
+position = Vector2(510, 237)
+push_on_input_1 = true
+
+[node name="MemoryBlock" parent="." instance=ExtResource("4_iggod")]
+position = Vector2(803, 124)
+
+[connection signal="value_pushed" from="TimerBlock" to="BinaryOpBlock" method="_on_input_1_value_received"]
+[connection signal="value_pushed" from="BinaryOpBlock" to="PrintBlock" method="_on_value_received"]
+[connection signal="value_pushed" from="BinaryOpBlock" to="MemoryBlock" method="_on_value_received"]
+[connection signal="value_pushed" from="MemoryBlock" to="BinaryOpBlock" method="_on_input_2_value_received"]
