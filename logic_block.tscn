@@ -47,3 +47,5 @@ texture_filter = 1
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_hgyyd")
 script = ExtResource("9_t8m1d")
+
+[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
