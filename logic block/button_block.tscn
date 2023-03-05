@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://tlwonugb5mv8"]
+
+[ext_resource type="PackedScene" uid="uid://cgpkgit6a6r4d" path="res://logic block/logic_block_sprite.tscn" id="1_cxyve"]
+[ext_resource type="Script" path="res://logic block/scripts/button_block.gd" id="1_dre3b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rwy4"]
+size = Vector2(120, 120)
+
+[node name="ButtonBlock" type="Node2D"]
+script = ExtResource("1_dre3b")
+
+[node name="LogicBlockSprite" parent="." instance=ExtResource("1_cxyve")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+color = Color(0.74902, 0.701961, 0.941176, 0.603922)
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+priority = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3rwy4")
+
+[node name="ClickTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="clicked" from="LogicBlockSprite" to="." method="_clicked"]
+[connection signal="clicked" from="LogicBlockSprite" to="." method="_on_logic_block_clicked"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -7,7 +7,8 @@ var frequency: float = 1
 func _ready():
 	$Timer.wait_time = 1 / frequency
 	$Timer.start()
-
+	$FrequencyLabel.text = str(frequency)
+	
 
 func _on_timer_timeout():
 	self.send_value(1)
@@ -17,3 +18,14 @@ func _on_timer_timeout():
 	$FlashRect.visible = true
 	await $FlashTimer.timeout
 	$FlashRect.visible = false
+
+
+func _on_num_input_value_changed(value):
+	frequency = value
+	if frequency > 0:
+		$FrequencyLabel.text = str(frequency)
+		$Timer.wait_time = 1 / frequency
+		$Timer.start()
+	else:
+		$FrequencyLabel.text = 'Paused'
+		$Timer.stop()

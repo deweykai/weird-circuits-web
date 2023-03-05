@@ -1,26 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://1xh1jnqfxphe"]
+[gd_scene load_steps=4 format=3 uid="uid://1xh1jnqfxphe"]
 
-[ext_resource type="PackedScene" path="res://logic block/timer_block.tscn" id="1_gspro"]
-[ext_resource type="PackedScene" uid="uid://vex6vs0rmjfw" path="res://logic block/binary_op_block.tscn" id="2_xvqku"]
-[ext_resource type="PackedScene" path="res://logic block/print_block.tscn" id="3_gbvsu"]
-[ext_resource type="PackedScene" uid="uid://dic8cg4xbkjj3" path="res://logic block/memory_block.tscn" id="4_iggod"]
+[ext_resource type="Script" path="res://main.gd" id="1_i48lf"]
+[ext_resource type="Theme" uid="uid://ptaev3hs06cs" path="res://theme.tres" id="2_4d743"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxxfv"]
+size = Vector2(11829, 6441)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_i48lf")
 
-[node name="TimerBlock" parent="." instance=ExtResource("1_gspro")]
-position = Vector2(155, 133)
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="PrintBlock" parent="." instance=ExtResource("3_gbvsu")]
-position = Vector2(511, 478)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(3600.5, 1822.5)
+shape = SubResource("RectangleShape2D_oxxfv")
+metadata/_edit_lock_ = true
 
-[node name="BinaryOpBlock" parent="." instance=ExtResource("2_xvqku")]
-position = Vector2(510, 237)
-push_on_input_1 = true
+[node name="Panel" type="PanelContainer" parent="."]
+top_level = true
+offset_right = 233.0
+offset_bottom = 257.0
 
-[node name="MemoryBlock" parent="." instance=ExtResource("4_iggod")]
-position = Vector2(803, 124)
+[node name="Container" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
 
-[connection signal="value_pushed" from="TimerBlock" to="BinaryOpBlock" method="_on_input_1_value_received"]
-[connection signal="value_pushed" from="BinaryOpBlock" to="PrintBlock" method="_on_value_received"]
-[connection signal="value_pushed" from="BinaryOpBlock" to="MemoryBlock" method="_on_value_received"]
-[connection signal="value_pushed" from="MemoryBlock" to="BinaryOpBlock" method="_on_input_2_value_received"]
+[node name="MenuButton" type="MenuButton" parent="Panel/Container"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_4d743")
+text = "Select Node"
+flat = false
+
+[node name="CheckButton" type="CheckButton" parent="Panel/Container"]
+layout_mode = 2
+text = "Place Node"
+
+[node name="ClearButton" type="Button" parent="Panel/Container"]
+layout_mode = 2
+text = "Clear"
+
+[node name="SelectedLabel" type="Label" parent="Panel/Container"]
+layout_mode = 2
+
+[node name="NoteLabel" type="Label" parent="Panel/Container"]
+layout_mode = 2
+autowrap_mode = 3
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="toggled" from="Panel/Container/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="Panel/Container/ClearButton" to="." method="_on_clear_button_pressed"]

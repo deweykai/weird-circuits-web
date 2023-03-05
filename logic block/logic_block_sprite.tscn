@@ -44,8 +44,24 @@ animations = [{
 
 [node name="LogicBlockSprite" type="Node2D"]
 script = ExtResource("1_ntoih")
+color = Color(0, 0, 0, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_33gdk")
+
+[node name="ColorOverlay" type="Polygon2D" parent="."]
+position = Vector2(-60, -60)
+scale = Vector2(120, 120)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(0, 0, -0.166667, 0, -0.166667, 1, 2.08165e-12, 1, 0, 1.16667, 1, 1.16667, 1, 1, 1.16667, 1, 1.16667, 0, 1, 2.08165e-12, 1, -0.166667, 0, -0.166667)
+
+[node name="Button" type="Button" parent="."]
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+flat = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_pressed"]
